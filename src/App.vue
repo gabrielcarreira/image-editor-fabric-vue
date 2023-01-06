@@ -1,26 +1,31 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <image-editor ref="editor"></image-editor>
+    <button
+      @click="
+        loadImage(
+          'https://www.pngmart.com/files/5/Black-Cat-PNG-Free-Download.png'
+        )
+      "
+    >
+      Load
+    </button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import ImageEditor from './ImageEditor.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    HelloWorld,
+    ImageEditor
   },
-};
-</script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  methods: {
+    loadImage(imageUrl) {
+      console.log(imageUrl)
+      this.$refs.editor.loadImage(imageUrl)
+    }
+  }
 }
-</style>
+</script>
